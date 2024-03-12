@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+        <title>Eventos em Multiplos Elementos</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+
+                /* const buttons = document.getElementsByTagName("button"); */
+                const buttons = document.querySelectorAll("button");
+
+               
+                
+                for(let i = 0; i < 5; i = i + 1) {
+                    
+                    buttons[i].addEventListener("click", function () {
+                        console.log(buttons[i].textContent);
+                    });
+                   
+                }
+                
+                /*
+                buttons[1].addEventListener("click", function() {
+                    console.log("funciona2");
+                });
+                buttons[2].addEventListener("click", function() {
+                    console.log("funciona3");
+                });
+                buttons[3].addEventListener("click", function() {
+                    console.log("funciona4");
+                });
+                buttons[4].addEventListener("click", function() {
+                    console.log("funciona5");
+                });
+                */
+            })
+        </script>
+    </head>
+    <body>
+        <div>
+            <button type="button">1</button>
+            <button type="button">2</button>
+            <button type="button">3</button>
+            <button type="button">4</button>
+            <button type="button">5</button>
+        </div>
+    </body>
+</html>

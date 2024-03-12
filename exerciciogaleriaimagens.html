@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <title>Exercício Galeria Imagens</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+
+                const images = [
+					"https://i.pinimg.com/originals/cc/ef/e5/ccefe56973651ff45bd99710918eb9e4.jpg",
+					"https://images.fineartamerica.com/images/artworkimages/mediumlarge/1/1-donkey-nice-and-cute-on-a-green-field-frank-bach.jpg",
+					"https://bouncymustard.com/wp-content/uploads/2021/06/14-Funny-Donkey-Smile-Laughing.jpg",
+					"https://i.pinimg.com/originals/2a/3a/e6/2a3ae62f9f9a893736a2c6138705d2f6.jpg",
+					"https://www.shared.com/content/images/2018/05/7c17e642-5db7-4022-8f45-0df32cf4e471.jpg",
+					"https://i.pinimg.com/originals/b1/c2/26/b1c2261c9e1a3a375394161b96c7c75d.jpg"
+				];
+                
+                const next = document.getElementById("next");
+                const photo = document.getElementById("photo");
+                
+                let pos = 0;
+
+                photo.src = images[pos];
+
+                next.addEventListener("click", function() {
+                    /* console.log( images[ pos ]); */
+
+                    
+                    /* pos = pos + 1; */
+                    pos++;
+                    
+                    if(pos > 5) {
+                        pos = 0;  
+                    }
+                    
+                    photo.src = images[ pos ]
+                });
+
+                prev.addEventListener("click", function() {
+                    
+                    /* pos = pos - 1; */ 
+                    pos--;
+                    
+                    if(pos < 0) {
+                        pos = 5;
+                    }
+                    
+                    photo.src = images[pos]
+                })
+            });
+        </script>
+        <style>
+            #photo { width: 100%; }
+        </style>
+    </head>
+    <body>
+        <div>
+            <button type="button" id="prev">Anterior</button>
+            <button type="button" id="next">Próximo</button>
+        </div>
+        <div>
+            <img id="photo" src="" alt="">
+        </div>
+    </body>
+</html>

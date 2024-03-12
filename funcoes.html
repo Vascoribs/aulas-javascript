@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Funções em JS</title>
+		<script>
+			/* funções podem ser de dois tipos em JS
+			   1) funções com um nome atribuido, podem ser invocadas multiplas vezes
+			   2) funções anónimas, funções que são para serem uma executas uma única vez num contexto específico
+			*/
+
+			window.onload = function(event) {
+				console.log(event);
+				console.log("Página carregou completamente");
+			}
+
+			function greeting(name) {
+				console.log("Olá ", name);
+			}
+
+			greeting("Ivo");
+			greeting("Susana");
+			greeting("Paulo");
+			
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>

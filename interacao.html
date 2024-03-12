@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+        <title>Interação com o documento</title>
+        <script>
+            window.onload = function () {
+                /* mais lento que o DOMContentLoaded */
+                const p = document.getElementById("paragraph"); 
+
+                console.log( p );
+            }
+            
+            /* DOM: Document Object Model 
+                DOMContentLoaded é uma forma extravagante de dizer "quando as tags de HTML tiverem acabado de carregar"
+            */
+            document.addEventListener("DOMContentLoaded", function () {
+                /* mais rápido que o window.onload*/
+
+                const h1 = document.getElementById("title");
+
+                console.log(h1);
+            });
+        
+        </script>
+        <script src="interacao.js" defer></script>
+    </head>
+    <body>
+        <h1 id="title">Hello JavaScript</h1>
+        <h2 id="subtitle">Sou um subtítulo</h2>
+        <p id="paragraph">Lorem ipsum e coisas</p>
+        
+    </body>
+</html>

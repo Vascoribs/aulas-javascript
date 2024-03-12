@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Pedra, Papel e Tesoura</title>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+
+            /*
+            const pedra = document.getElementById("pedra")
+            const papel = document.getElementById("papel")
+            const tesoura = document.getElementById("tesoura")
+            */
+
+            let cpuChoice = "Papel";
+
+            const buttons = document.querySelectorAll("button");
+
+            for(let i = 0; i < 3; i++){
+
+                buttons[i].addEventListener("click", function() {
+                    
+                    let playerChoice = buttons[i].textContent;
+                    
+                    console.log( "Player:", playerChoice);
+                    console.log( "CPU:", cpuChoice);
+
+                    if (cpuChoice == playerChoice){
+                        console.log("Empate");
+                    }
+
+                    if (playerChoice == "Tesoura" && cpuChoice == "Pedra") {
+                        console.log("Ganhou CPU");
+                    }
+
+                    if (playerChoice == "Tesoura" && cpuChoice == "Papel") {
+                        console.log("Ganhou Player");
+                    }
+
+                    if(playerChoice == "Papel" && cpuChoice == "Pedra") {
+                        console.log("Ganhou Player");
+                    }
+
+                    if(playerChoice == "Papel" && cpuChoice == "Tesoura") {
+                        console.log("Ganhou CPU");
+                    }
+
+                    if(playerChoice == "Pedra" && cpuChoice == "Tesoura") {
+                        console.log("Ganhou Player");
+                    }
+
+                    if (playerChoice == "Pedra" && cpuChoice == "Papel") {
+                        console.log("Ganhou CPU");
+                    }
+                });
+            }
+            
+            /*
+            pedra.addEventListener("click", function() {
+                console.log("pedra");
+            });
+
+            papel.addEventListener("click", function(){
+                console.log("papel");
+            });
+
+            tesoura.addEventListener("click", function(){
+                console.log("tesoura");
+            })
+            */
+        });
+    </script>
+</head>
+<body>
+    <h1>Pedra, Papel, Tesoura</h1>
+    <div>
+        <button type="button" id="pedra">Pedra</button>
+        <button type="button" id="papel">Papel</button>
+        <button type="button" id="tesoura">Tesoura</button>
+    </div>
+</body>
+</html>

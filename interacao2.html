@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+        <title>Interação com atributos de HTML</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+
+                const link = document.getElementById("link");
+
+                console.log(link.textContent);
+
+                /* 
+                multiplas_palavras_cenas <- snake_case
+                MultiplasPalavrasCenas   <- PascalCase
+                multiplasPalavrasCenas   <- camelCase
+                */
+                
+                console.log(link.href);
+
+                /* exercicio
+                    1) selecionar a imagem no JS
+                    2) mostrar na consola o endereço da imagem e o alt respectivo
+                    */
+
+                const image = document.getElementById("img");
+                
+                console.log(img.src);
+                console.log(img.alt);
+
+                
+                const changeBtn = document.getElementById("change");
+                
+                /* SOLUÇÃO AULA
+                
+                const image1 = "https://www.infoescola.com/wp-content/uploads/2017/01/canguru-5686924.jpg";
+                const image2 = "https://wildnaturephotoexpeditions.com/wp-content/uploads/Red-necked-Wallabies.jpg";
+                const text1 = "Site do MDN";
+                const text2 = "Novo texto qualquer";
+                
+                */
+                
+                changeBtn.addEventListener("click", function() {
+                    /* alteração dos atributos de HTML */
+
+                    /* SOLUÇÃO AULA
+                    
+                    if ( image.src == image1 ) {
+                        image.src = image2;
+
+               		    link.textContent = text2;
+					}
+					else {
+						image.src = image1;
+					
+						link.textContent = text1;
+				
+
+                    */
+                    const image = document.getElementById("img") 
+
+                    if(image.src.match("https://www.infoescola.com/wp-content/uploads/2017/01/canguru-5686924.jpg")) {
+                        
+                        image.src = "https://wildnaturephotoexpeditions.com/wp-content/uploads/Red-necked-Wallabies.jpg"
+                    }
+                    else {
+                        
+                        image.src = "https://www.infoescola.com/wp-content/uploads/2017/01/canguru-5686924.jpg"
+                    }
+                    
+                    
+                    console.log(link.textContent);
+                    link.textContent = "Novo texto qualquer";
+                });
+            });    
+            
+    
+        </script>
+    </head>
+    <body>
+        <div>
+            <a id="link" href="https://developer.mozilla.org/en-US/">Site do MDN</a>
+        </div>
+        <div>
+            <img id="img" src="https://www.infoescola.com/wp-content/uploads/2017/01/canguru-5686924.jpg" alt="Criatura fofa">
+        </div>
+        <div>
+            <button type="button" id="change">Mudar</button>
+        </div>
+    </body>
+</html>
