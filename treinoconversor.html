@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Unit Converter</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+
+                const form = document.querySelector("form");
+
+                form.addEventListener("submit", function(event) {
+
+                    event.preventDefault()
+
+                    let kg = document.getElementById("kg")
+                    let lbs = document.getElementById("lbs")
+
+                    function kgToLbs(lbs) {
+
+                        lbs = kg * 2.2046;
+
+                        console.log(kgToLbs)
+                    }
+
+                    kgToLbs()
+                    
+
+                    form.kg.value = ""
+                })
+
+
+            })
+        </script>
+        <style>
+            h1 {
+                font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+                font-size: 3rem;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Weigth Converter</h1>
+        <div>
+            <form method="post" action="treinoconversor.html">
+                <label>
+                    Kilograms
+                    <input id="kg" type="text" name="kg">
+                </label>
+                <p><span id="lbs">Pounds:</span></p>
+                <button type="submit">Convert</button>
+            </form>
+            
+        </div>
+    </body>
+</html>

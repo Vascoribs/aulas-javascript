@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+        <title>Lidar com Formulários</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+                
+                const form = document.querySelector("form");
+
+                form.addEventListener("submit", function(event) {
+                    
+                    /* como os formulários saem da página por default na sua submissão vamos prevenir que isso aconteça se for necessário */
+                    event.preventDefault();
+
+                    /* para aceder ao valor actual de um campo de formulário, acedemos ao campo pelo seu nome dentro do formulário e depois a propriedade de value */
+                    console.log(form.full_name.value);
+                });
+
+                form.full_name.addEventListener("change", function() {
+                    console.log("Alterado.Valor actual:", form.full_name.value);
+                })
+
+                const password = form.password;
+                const repeatPwd = form.repeat_password;
+
+                function comparePasswords() {
+
+                    if(
+                        password.value.length > 0 &&
+                        repeatPwd.value.length > 0 &&
+                        password.value != repeatPwd.value
+                        ) {
+                        alert("Passwords são Diferentes!")
+                    }
+                }
+
+                password.addEventListener("change", comparePasswords );
+                   
+                 
+                
+
+                repeatPwd.addEventListener("change", comparePasswords);
+
+            });
+        </script>
+    </head>
+    <body>
+        <main>
+            <form method="post" action="lidarcomformularios.html">
+                <div>
+                    <label>
+                        Nome Completo
+                        <input type="text" name="full_name" required minlength="3" maxlength="80">
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Password
+                        <input type="password" name="password" required minlength="8">
+                    </label>
+                </div>
+                <div>
+                    <label>
+                        Repetir Password
+                        <input type="password" name="repeat_password" required minlength="8">
+                    </label>
+                </div>
+                <div>
+                    <button type="submit" name="send">Enviar</button>
+                </div>
+            </form>    
+        </main>
+    </body>
+</html>

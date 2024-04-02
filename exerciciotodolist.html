@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Agenda de Tarefas</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+			
+				const form = document.querySelector("form");
+				const taskList = document.getElementById("taskList");
+
+				 taskArray = [];
+				/* próximo passo: se existir algo no sessionStorage, enfiar dentro do array de JS */
+				 // tem que aparecer com as ultimas tarefas guardadas
+
+                if(sessionStorage["tasks"]) {
+                    
+                    taskArray = JSON.parse( sessionStorage["tasks"] ) 
+                }
+
+                
+                for(let i = 0; i < taskArray.length; i++) {
+                    taskList.appendChild( document.createElement("li"));
+                    taskList.lastElementChild.textContent = taskArray[i];
+                }
+
+				form.addEventListener("submit", function(event) {
+
+					event.preventDefault();
+
+					taskList.appendChild( document.createElement("li") );
+					taskList.lastElementChild.textContent = form.task.value;
+					
+					taskArray.push( form.task.value );
+
+					sessionStorage["tasks"] = JSON.stringify( taskArray );
+
+                    form.task.value = "";
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form method="post" action="js26.html">
+			<div>
+				<label>
+					Tarefa
+					<input type="text" name="task" required autofocus>
+				</label>
+				<button type="submit">Guardar</button>
+			</div>
+		</form>
+		<ol id="taskList"></ol>
+	</body>
+</html>

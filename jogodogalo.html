@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Jogo do Galo / Tic Tac Toe / Jogo da Velha</title>
+		<style>
+			#game {
+				max-width: 980px;
+				margin: 100px auto 0 auto;
+				display: grid;
+				grid-template-columns: 1fr 1fr 1fr;
+				grid-template-rows: 20vh 20vh 20vh;
+			}
+
+			#game button {
+				font-size: 5vw;
+			}
+
+			.container {
+				max-width: 980px;
+				margin: 0 auto;
+			}
+			
+			#reset {
+				font-size: 200%;
+				padding: 10px;
+			}
+		</style>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+			
+				let currentSymbol = "X";
+
+				let xScore = 0;
+				let oScore = 0;
+				const xScoreOutput = document.getElementById("xScoreOutput");
+				const oScoreOutput = document.getElementById("oScoreOutput");
+				
+				const resetBtn = document.getElementById("reset");
+				const buttons = document.querySelectorAll("#game button");
+
+				for(let i = 0; i < 9; i++) {
+
+					buttons[i].addEventListener("click", function() {
+
+						if( buttons[i].textContent == "" ) {
+
+							buttons[i].textContent = currentSymbol;
+
+							checkWinner();
+
+							if( currentSymbol == "X" ) {
+								currentSymbol = "O";
+							}
+							else {
+								currentSymbol = "X";
+							}
+						}
+					});
+				}
+				
+				function checkWinner() {
+
+					if(
+						buttons[0].textContent == currentSymbol &&
+						buttons[1].textContent == currentSymbol &&
+						buttons[2].textContent == currentSymbol
+					) {
+						declareWinner();
+					}
+
+					if(
+						buttons[3].textContent == currentSymbol &&
+						buttons[4].textContent == currentSymbol &&
+						buttons[5].textContent == currentSymbol
+					) {
+						declareWinner();
+					}
+
+					if(
+						buttons[6].textContent == currentSymbol &&
+						buttons[7].textContent == currentSymbol &&
+						buttons[8].textContent == currentSymbol
+					) {
+						declareWinner();
+					}
+
+					if(
+						buttons[0].textContent == currentSymbol &&
+						buttons[3].textContent == currentSymbol &&
+						buttons[6].textContent == currentSymbol
+					) {
+						declareWinner();
+					}
+
+					if(
+						buttons[1].textContent == currentSymbol &&
+						buttons[4].textContent == currentSymbol &&
+						buttons[7].textContent == currentSymbol
+					) {
+						declareWinner();
+					}
+
+					if(
+						buttons[2].textContent == currentSymbol &&
+						buttons[5].textContent == currentSymbol &&
+						buttons[8].textContent == currentSymbol
+					) {
+						declareWinner();
+					}
+
+					if(
+						buttons[0].textContent == currentSymbol &&
+						buttons[4].textContent == currentSymbol &&
+						buttons[8].textContent == currentSymbol
+					) {
+						declareWinner();
+					}
+
+					if(
+						buttons[2].textContent == currentSymbol &&
+						buttons[4].textContent == currentSymbol &&
+						buttons[6].textContent == currentSymbol
+					) {
+						declareWinner();
+					}
+					
+					xScoreOutput.textContent = xScore;
+					oScoreOutput.textContent = oScore;
+				}
+
+                function declareWinner() {
+                    alert("Ganhou " + currentSymbol);
+						
+					if(currentSymbol == "X") {
+						xScore++;
+					}
+					else {
+						oScore++;
+					}
+						
+					resetGame();
+                }
+
+				function resetGame() {
+
+					for(let i = 0; i < 9; i++) {
+						buttons[i].textContent = "";
+					}
+
+					currentSymbol = "X";
+				}
+				
+				resetBtn.addEventListener("click", function() {
+					//window.location.reload();
+					resetGame();
+				});
+
+			});
+		</script>
+	</head>
+	<body>
+		<div class="container">
+			<h1>Jogo do Galo</h1>
+			<dl>
+				<dt>Vitórias X</dt>
+				<dd id="xScoreOutput">0</dd>
+				<dt>Vitórias O</dt>
+				<dd id="oScoreOutput">0</dd>
+			</dl>
+		</div>
+		<div id="game">
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+			<button type="button"></button>
+		</div>
+		<div class="container">
+			<button type="button" id="reset">Reiniciar</button>
+		</div>
+	</body>
+</html>

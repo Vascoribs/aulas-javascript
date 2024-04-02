@@ -12,45 +12,51 @@
             const tesoura = document.getElementById("tesoura")
             */
 
-            let cpuChoice = "Papel";
+            const options = ["Pedra", "Papel", "Tesoura"];
 
+            
+            const cpuChoiceOutput = document.getElementById("cpuChoice");
+            const playerChoiceOutput = document.getElementById("playerChoice");
+            const resultOutput = document.getElementById("result");
+            
             const buttons = document.querySelectorAll("button");
-
+            
             for(let i = 0; i < 3; i++){
-
+                
                 buttons[i].addEventListener("click", function() {
                     
+                    let cpuChoice = options[ Math.floor(Math.random() * 3) ] 
                     let playerChoice = buttons[i].textContent;
                     
-                    console.log( "Player:", playerChoice);
-                    console.log( "CPU:", cpuChoice);
+                    playerChoiceOutput.textContent = playerChoice;
+                    cpuChoiceOutput.textContent = cpuChoice;
 
                     if (cpuChoice == playerChoice){
-                        console.log("Empate");
+                        resultOutput.textContent = "Empate";
                     }
 
                     if (playerChoice == "Tesoura" && cpuChoice == "Pedra") {
-                        console.log("Ganhou CPU");
+                        resultOutput.textContent = "Ganhou CPU";
                     }
 
                     if (playerChoice == "Tesoura" && cpuChoice == "Papel") {
-                        console.log("Ganhou Player");
+                        resultOutput.textContent = "Ganhou Player";
                     }
 
                     if(playerChoice == "Papel" && cpuChoice == "Pedra") {
-                        console.log("Ganhou Player");
+                        resultOutput.textContent = "Ganhou Player";
                     }
 
                     if(playerChoice == "Papel" && cpuChoice == "Tesoura") {
-                        console.log("Ganhou CPU");
+                        resultOutput.textContent = "Ganhou CPU";
                     }
 
                     if(playerChoice == "Pedra" && cpuChoice == "Tesoura") {
-                        console.log("Ganhou Player");
+                        resultOutput.textContent = "Ganhou Player";
                     }
 
                     if (playerChoice == "Pedra" && cpuChoice == "Papel") {
-                        console.log("Ganhou CPU");
+                        resultOutput.textContent = "Ganhou CPU";
                     }
                 });
             }
@@ -78,5 +84,13 @@
         <button type="button" id="papel">Papel</button>
         <button type="button" id="tesoura">Tesoura</button>
     </div>
+    <dl>
+        <dt>Jogador</dt>
+        <dd id="playerChoice"></dd>
+        <dt>CPU</dt>
+        <dd id="cpuChoice"></dd>
+        <dt>Resultado</dt>
+        <dd id="result"></dd>
+    </dl>
 </body>
 </html>

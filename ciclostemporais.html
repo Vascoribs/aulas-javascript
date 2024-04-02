@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ciclos Temporais</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+
+
+                let s = 0; 
+                let m = 0;
+                let h = 0;
+                let d = 0;
+
+
+                setInterval(function() {
+
+                    
+                     s++;
+
+                    if(s > 59) {
+                        s = 0; 
+                        m++;
+                    }
+
+                    if(m == 60) {
+                        m = 0;
+                        h++;
+                    }
+
+                    if(h > 23) {
+                        h = 0;
+                        d++;
+                    }
+
+                    document.getElementById("seconds").textContent = s < 10 ? "0"+s : s;
+                    document.getElementById("minutes").textContent = m < 10 ? "0"+m : m;
+                    document.getElementById("hours").textContent = h < 10 ? "0"+h : h;
+                    document.getElementById("days").textContent = d;
+
+            
+
+                }, 10);
+            })
+        </script>
+    </head>
+    <body>
+        <div>
+            <span id="hours">0</span>
+            <span id="minutes">0</span>
+            <span id="seconds">0</span>
+        </div>
+        <div>
+            <span id="days">0</span>
+        </div>
+    </body>
+</html>

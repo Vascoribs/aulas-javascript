@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+        <title>Data e Hora Actual</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function () {
+            
+                const datetime = new Date();
+            
+                const hoursOutput = document.getElementById("hours");
+                const minutesOutput = document.getElementById("minutes");
+                const secondsOutput = document.getElementById("seconds");
+
+                let h = datetime.getHours();
+                let m = datetime.getMinutes();
+                let s = datetime.getSeconds();
+
+                
+
+
+                setInterval(function() {
+                    s++;
+                    
+                    hoursOutput.textContent = h;
+                    minutesOutput.textContent = m;
+                    secondsOutput.textContent = s;
+
+                    if(s > 59) {
+                        s = 0; 
+                        m++;
+                        }
+
+                    if(m == 59) {
+                        m = 0;
+                        h++;
+                        }
+
+                    if(h > 23) {
+                        h = 0;
+                        }   
+
+                    /* if (s < 10) {
+                        secondsOutput.textContent = "0" + s;
+                    }  */
+
+                    secondsOutput.textContent = s < 10 ? "0"+s : s;
+
+                    if (m < 10) {
+                        minutesOutput.textContent = "0"+ m;
+                    }
+
+                    if (h < 10) {
+                        hoursOutput.textContent = "0"+ h;
+                    }  
+
+                }, 1000)
+            
+            
+
+            /*
+            console.log( datetime.getHours() );
+            console.log( datetime.getMinutes() );
+            console.log( datetime.getSeconds() );            
+            
+            console.log( datetime.getMonth()+1 );
+            console.log( datetime.getYear() );
+            console.log( datetime.getFullYear() );
+            console.log( datetime.getDay() );
+            console.log( datetime.getDate() ); 
+            */
+            });
+        </script>
+    </head>    
+    <body>
+        <div>
+            <span id="hours">00</span>
+            <span id="minutes">00</span>
+            <span id="seconds">00</span>
+        </div>
+    </body>
+</html>

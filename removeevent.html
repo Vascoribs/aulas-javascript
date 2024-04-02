@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Adicionar e Remover Eventos</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function(){
+
+                const button = document.querySelector("button");
+
+                function buttonClick(){
+                    console.log("clique");
+
+                    /* removendo o clique, a função só consegue ser executada uma única vez*/
+                    button.removeEventListener("click", buttonClick);
+                }
+
+                /* para poder eventualmente remover o event listener, o event listener não pode ser criado com função anónima, tem que ser uma função com nome  */
+                /* quando essa função com nome é usada como argumento, NÂO pode ser usada com parênteses */
+                button.addEventListener("click", buttonClick );
+
+                    
+                
+
+
+            })
+        </script>
+    </head>
+    <body>
+        <div>
+            <button type="button">clica-me</button>
+        </div>
+    </body>
+</html>

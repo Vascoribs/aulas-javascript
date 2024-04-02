@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <title>Manipulação do DOM</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+
+                const content = document.getElementById("content");
+
+                content.appendChild( document.createElement("p") );
+
+                content.lastElementChild.textContent = "Novo parágrafo";
+
+                content.firstElementChild.remove();
+
+                content.nextElementSibling.firstElementChild.remove();
+                content.nextElementSibling.lastElementChild.remove();
+                content.nextElementSibling.appendChild (document.createElement("strong"))
+                content.nextElementSibling.firstElementChild.textContent = "escrevi agora";
+            });
+        </script>
+    </head>
+    <body>
+        <div id="content">
+            <p>Lorem ipsum yup yup</p>
+            <p>Isto é certamente um parágrafo</p>
+        </div>
+        <div>
+            <span>Texto</span>
+            <span>Coisas</span>
+        </div>
+    </body>
+</html>

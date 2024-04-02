@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="utf-8">
+        <title>Aplicação de Chat</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+
+                const form = document.querySelector("form");
+                const chatArea = document.getElementById("chatArea");
+
+                const bots = [
+                    {
+                        "username": "Bill Clinton",
+                        "phrases": [
+                            "Eu não tive nada com aquela senhora", "Este é um trabalho asqueroso, que alguém tem de fazer", "Isto é uma frase de Bill Clinton"
+                        ]
+                    },
+                    {
+                        "username": "Toy",
+                        "phrases": [
+                            "Rosa Negra", "Pôr do Sol", "Lavar antes de limpar"
+                        ]
+                    },
+                    {
+                        "username": "Sócrates",
+                        "phrases": [
+                            "Isto é uma mentira", "Isto é outra mentira", "Isto é verdade. Estava a brincar, é mentira"
+                        ]
+                    },
+                    {
+                        "username": "Quim Barreiros",
+                        "phrases": [
+                            "A garagem da vizinha", "O bacalhau quer alho", "É o melhor tempero"
+                        ]
+                    }
+                ];
+
+            
+
+                form.addEventListener("submit", event => {
+
+                    event.preventDefault();
+
+                    writeMessage(form.username.value, form.message.value);
+
+                    form.message.value = ""
+
+
+                });
+
+                function writeMessage(username, message) {
+                    chatArea.appendChild(document.createElement("dt"));
+                    chatArea.lastElementChild.textContent = username;
+                    chatArea.appendChild(document.createElement("dd"));
+                    chatArea.lastElementChild.textContent = message;
+                }
+
+                function chooseBot() {
+
+                    const randomBot = bots[Math.floor(Math.random() * bots.length)];
+                    const randomPhrase = Math.floor(Math.random() *  randomBot.phrases.length)
+
+                    const username = randomBot.username;
+                    const message = randomBot.phrases[ randomPhrase];
+
+                    writeMessage( username, message );
+                }
+
+                setInterval(() => {
+                    const randomNum = Math.ceil(Math.random() * 20); //número de 1 a 20
+
+                    /* ter uma possibilidade em 20 de mostrar uma mensagem de um bot */
+                    if(randomNum === 1){
+                        chooseBot();
+                    }
+
+                }, 200);
+
+            });
+        </script>
+        <style>
+            #chatArea {
+                font-family: Calibri, sans-serif;
+                overflow: auto;
+                border: 2px solid #999;
+            }
+
+            #chatArea dt, #chatArea dd {
+                display: inline-block;
+                vertical-align: top;
+                margin: 0;
+                padding: 0;
+            }
+
+            #chatArea dt {
+                width: 20%;
+                font-weight: bold;
+                text-align: right;
+            }
+            #chatArea dd {
+                margin-left: 8px;
+                width: 78%;
+            }
+        </style>
+    </head>
+    <body>
+        <dl id="chatArea"></dl>
+        <div>
+            <form method="post" action="aplicacaochat.html">
+                <input type="text" name="username" required placeholder="Utilizador" aria-label="Utilizador">
+                <input type="text" name="message" required placeholder="Escreva mensagem" aria-label="Mensagem">
+                <button type="submit">OK</button>
+            </form>
+        </div>
+    </body>
+</html>

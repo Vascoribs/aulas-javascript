@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <title>Navegação no DOM</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+
+                const list = document.getElementById("list");
+
+                /* a partir da lista, chegámos ao segundo <p>*/
+                console.log( list.nextElementSibling.nextElementSibling );
+
+                console.log( list.firstElementChild );
+                console.log( list.lastElementChild );
+                console.log ( list.lastElementChild.previousElementSibling );
+
+                console.log (
+                    list
+                    .previousElementSibling
+                    .lastElementChild
+                    .firstElementChild
+                    .lastElementChild.previousElementSibling /* ou children[1] */
+                    .firstElementChild
+                    .lastElementChild
+                    .lastElementChild.textContent
+                );
+
+                console.log( 
+                    document
+                    .querySelector("body > ul:first-child ul ul li:last-child em")
+                    .textContent
+                );
+
+                console.log(
+                    list.previousElementSibling
+                    .getElementsByTagName("em")[2]
+                    .textContent
+                );
+                
+            });
+        </script>
+    </head>
+    <body>
+        <ul>
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3
+                <ul>
+                    <li>Subitem 1</li>
+                    <li>Subitem 2
+                        <ul>
+                            <li>Subsumitem1 <em>Coisas e tal</em></li>
+                            <li>Subsumitem2 <em>Coisas e tal</em></li>
+                            <li>Subsumitem3 <em>ESTE</em></li>
+                        </ul>
+                    </li>
+                    <li>Subitem 3</li>
+                </ul>
+            </li>
+        </ul>
+        <ul id="list">
+            <li>
+                <a href="">Item 1</a>
+            </li>
+            <li>
+                <a href="">Item 2</a>
+            </li>
+            <li>
+                <a href="">Item 3</a>
+            </li>
+            <li>
+                <a href="">Item 4</a>
+            </li>
+        </ul>
+        <p>Lorem Ipsum cenas e tal</p>
+        <p>Lorem Ipsum cenas e tal bla bla bla bla bla bla bl</p>
+    </body>
+</html>

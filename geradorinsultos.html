@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>Gerador de Insultos</title>
+    <script>
+
+        const adjectives = ["grande", "enorme", "gigantesco", "uma beca", "puramente", "excelentíssimo"];
+        const insults = ["idiota", "bosta", "animal", "palhaço", "boi", "nabo", "joca", "imbecil"];
+
+
+        
+        document.addEventListener("DOMContentLoaded", function() {
+
+            const form = document.querySelector("form");
+            let pOutput = document.getElementById("output");
+
+            form.addEventListener("submit", function(event) {
+                event.preventDefault()
+
+                let a = Math.floor( Math.random() * adjectives.length);
+                let i = Math.floor( Math.random() * insults.length);
+
+                pOutput.textContent = form.name.value + " é " + adjectives[a] + " " + insults[i];
+            
+            });
+
+
+
+        })
+    </script>
+</head>
+<body>
+    <form method="post" action="geradorinsultos.html">
+        <div>
+            <label>
+                Alguém que Odeie
+                <input type="text" name="name" required>
+            </label>
+            <button type="submit">OK</button>
+        </div>
+    </form>
+    <p id="output"></p>
+</body>
+</html>

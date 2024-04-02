@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <title>Formulário de Login</title>
+        <script>
+            const usernameList = ["GokuForever", "Vegeta", "Pikachu", "Mewtwo"];
+            const passwordList = ["12345678", "1234", "Raichu", "Mew"];
+
+            document.addEventListener("DOMContentLoaded", function() {
+
+                const form = document.querySelector("form")
+
+                form.addEventListener("submit", function(event) {
+                    
+                    let validLogin = false;
+                    
+                    event.preventDefault()
+
+                    for(let i = 0; i < usernameList.length; i++) {
+
+                        if(usernameList[i] == form.username.value &&
+                            passwordList[i] == form.password.value
+                        ) {
+                            validLogin = true;
+                        }
+
+                    }
+                    
+                    
+                    if( validLogin ) {
+                        alert("bem vindo");
+                    }
+
+                    else {
+                        alert("NOP");
+                    }
+                    
+                })
+            })
+        </script>
+    </head>
+    <body>
+        <form method="post" action="formulariologin.html">
+            <div>
+                <label>
+                    Nome de Utilizador
+                    <input type="text" name="username" required>
+                </label>
+            </div>
+            <div>
+                <label>
+                    Palavra-passe
+                    <input type="password" name="password" required>
+                </label>
+            </div>
+            <div>
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </body>
+</html>

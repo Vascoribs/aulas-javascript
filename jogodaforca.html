@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt">
+	<head>
+		<meta charset="utf-8">
+		<title>Jogo da Forca</title>
+		<script>
+			document.addEventListener("DOMContentLoaded", function() {
+
+                let attemptsLeft = 6;
+                let currentWord = "";
+                let underscores;
+
+
+				const words = ["Portugal", "Barcelos", "Ferrari", "Lisboa", "Portalegre", "CasteloBranco", "Otorrinolaringologista", "Otorrinolaringologia", "Paralelepipedo", "Hexaedro", "Paralelogramo", "Ornitorrinco", "Cenas", "Algarve", "Estrupicio", "Alentejo", "Crustaceos", "Inglaterra", "Adaptabilidade"];
+	            
+                const game = document.getElementById("game");
+				const form = document.querySelector("form");
+				const btnReset = document.getElementById("btnReset");
+                const attemptsLeftOutput = document.getElementById("attemptsLeftOutput");
+                
+                function startGame() {
+
+                    const randNumber = Math.floor(Math.random() * words.length);
+				    currentWord = words[randNumber].toUpperCase();
+				
+				    console.log(currentWord);
+                    
+                    attemptsLeft = 6;
+
+                    /* utilizar com muita moderação */
+                    /* isto vai limpar todo o HTML existente dentro da área de jogo */
+                    game.innerHTML = "";
+
+                    /* injectar os SPANs com underscores na página pelo número de letras */
+				    for(let i = 0; i < currentWord.length; i++) {
+
+                        game.appendChild( document.createElement("span") );
+
+                        game.lastElementChild.textContent = "_";
+                    }
+
+                    /* guardar a lista de SPANs criados */
+				    underscores = document.querySelectorAll("#game span")
+                    attemptsLeftOutput.textContent = attemptsLeft;
+                };
+				
+                startGame();
+			
+				
+				form.addEventListener("submit", function(event) {
+
+					event.preventDefault();
+					
+                    let correctLetter = false;
+
+					const letterPicked = form.letter.value.toUpperCase();
+
+					form.letter.value = "";
+
+					for(let i = 0; i < currentWord.length; i++) {
+					
+						if(letterPicked == currentWord[i]) {
+
+							underscores[i].textContent = letterPicked;
+
+                            correctLetter = true;
+						}
+					}
+
+                    if(correctLetter === false) {
+                        attemptsLeft--;
+                        console.log(attemptsLeft)
+                    }
+                    attemptsLeftOutput.textContent = attemptsLeft;
+                    
+
+                    if(attemptsLeft === 0) {
+                        alert("Game Over");
+                        startGame();
+                    }
+					
+				});   
+                
+                btnReset.addEventListener("click",function() {
+                    startGame();
+                });
+			});
+		</script>
+		<style>
+			#game {
+				letter-spacing: 0.7rem;
+				font-size: 2rem;
+				font-weight: bold;
+				margin-bottom: 30px;
+			}
+
+			form input {
+				width: 24px;
+			}
+
+            dl {
+                display: flex;
+                justify-content: flex-end;
+            }
+		</style>
+	</head>
+	<body>
+        <dl>
+            <dt>Tentativas Restantes</dt>
+            <dd id="attemptsLeftOutput">6</dd>
+        </dl>
+		<div id="game"></div>
+		<form method="post" action="js22.html">
+			<div>
+				<label>
+					Escolha uma Letra
+					<input type="text" name="letter" autofocus required minlength="1" maxlength="1">
+				</label>
+				<button type="submit">OK</button>
+			</div>
+		</form>
+        <div>
+            <button type="button" id="btnReset">Reiniciar</button>
+        </div>
+	</body>
+</html>

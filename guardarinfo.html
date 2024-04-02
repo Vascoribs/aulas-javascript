@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Guardar Informações entre páginas dentro do Browser</title>
+        <script>
+            //console.log (sessionStorage);
+
+            //console.log(localStorage);
+
+            //sessionStorage["highscore"] = 1000;
+
+            //console.log(sessionStorage["highscore"]);
+
+            document.addEventListener("DOMContentLoaded", function() {
+
+                const messageBox = document.getElementById("form_message");
+                const button = document.getElementById("button");
+                const form = document.querySelector("form");
+            
+                /* vamos criar um sistema de rascunho a cada 5s, guardamos o texto que está actualmente na textarea no sessioStorage */
+
+                setInterval(function () {
+
+                    //if(messageBox.value.length > 0)
+                    if(messageBox.value != "") {
+                        localStorage["form_message_draft"] = messageBox.value;
+                      
+                    }
+                    
+                    if(localStorage["form_message_draft"]) {
+                        messageBox.value = localStorage["form_message_draft"];
+                    }
+
+
+                },5000)
+            
+                /*button.addEventListener("click", function() {
+                    localStorage["form_message_draft"] = "";
+                })*/
+
+                form.addEventListener("submit", function(event) {
+                    event.preventDefault();
+
+                    messageBox.value = ""; //limpar a caixa de texto
+
+                    /*localStorage["form_message_draft"] = ""; limpa o texto mas mantem este item no localStorage */
+
+                    localStorage.removeItem("form_message_draft"); //remove por inteiro do localStorage 
+
+                })
+            
+            });
+        </script>
+    </head>
+    <body>
+        <form method="post" action="guardarinfo.html">
+            <div>
+                <label for="form_message">Mensagem</label>
+            </div>
+            <div>
+                <textarea id="form_message" name="message" required></textarea>
+            </div>
+            <div>
+                <button id="button" type="submit">Enviar</button>
+            </div>
+        </form>
+    </body>
+</html>

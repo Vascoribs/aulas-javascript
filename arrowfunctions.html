@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <title>Trabalhar com Arrow Functions</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+
+                const clicker = document.getElementById("clicker");
+                const greetingOutput = document.getElementById("greetingOutput");
+
+
+                /* arrow functions permitem abreviar várias partes de uma função convencional */
+                clicker.addEventListener("click", event => console.log(this));
+
+                /* arrow functions mudam a maneira como a keyword "this" funciona em relação a funcções tradicionais */
+                //clicker.addEventListener("click", function(event) { console.log(this); })
+
+                const greeter = () => {
+
+                    const date = new Date();
+
+                    if(date.getHours() >= 20) {
+                        return "Boa Noite!";
+                    }
+                    
+                    else if (date.getHours() >= 13){
+                        return "Boa Tarde!"
+                    }
+                    else {
+                        return "Bom Dia!";
+                    }
+                } 
+                
+                greetingOutput.textContent = greeter();
+
+            });
+        </script>
+    </head>
+    <body>
+        <div id="greetingOutput"></div>
+        <div>
+            <button type="button" id="clicker">Clica-me</button>
+        </div>
+    </body>
+</html>

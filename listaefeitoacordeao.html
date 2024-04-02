@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt">
+    <head>
+        <meta charset="UTF-8">
+        <title>Lista com Efeito Acordeão</title>
+        <script>
+            document.addEventListener("DOMContentLoaded", function() {
+
+                const list = document.getElementById("list");
+
+                let n = 1;
+
+                setInterval(function (){
+
+
+					if(n <= 20) {
+						list.appendChild( document.createElement("li") );
+
+						list.lastElementChild.textContent = "Item " + n;
+
+						n++;
+					}
+					else {
+
+						if(list.children.length > 0) {
+							list.lastElementChild.remove();
+						}
+						else {
+							n = 1;
+						}
+					}		
+                },200);
+
+
+            })
+        </script>
+    </head>
+    <body>
+        <ul id="list"></ul>
+    </body>
+    </html>
